@@ -1,7 +1,9 @@
 const mensData = document.getElementById('men')
 
 async function fetchData() {
+
   try {
+
     const response = await fetch('https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -23,12 +25,13 @@ async function fetchData() {
 }
 //this is the data fetched for the initial render
 fetchData().then(data => {
+
   const defaultValue = data.categories[0];
   console.log(defaultValue);
+
   defaultValue.category_products.map(val => {
     const productElement = document.createElement('div');
     productElement.classList.add('product');
-
     productElement.innerHTML = `
 <img src="${val.image}">
 <div class="product-info">
@@ -69,7 +72,6 @@ categoryLinks.forEach(categoryLink => {
     const allEmojiDivs = document.querySelectorAll('.section .emoji');
     const emojiDivs = document.querySelectorAll('.emoji');
 
-  
      allEmojiDivs.forEach(innerEmojiDiv => {
       if (innerEmojiDiv !== emojiDiv) {
         const innerH2 = innerEmojiDiv.querySelector('h2');
@@ -79,6 +81,7 @@ categoryLinks.forEach(categoryLink => {
   });
 });
 
+// to make the state active and render the data as per the title
 categoryLinks.forEach(categoryLink => {
 
   categoryLink.addEventListener('click', (event) => {
